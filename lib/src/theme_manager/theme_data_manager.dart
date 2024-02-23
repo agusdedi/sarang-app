@@ -4,6 +4,7 @@ import 'package:sarang/src/theme_manager/font_manager.dart';
 
 ThemeData getApplicationThemeData() {
   return ThemeData(
+    useMaterial3: false,
     scaffoldBackgroundColor: ColorManager.primary,
     appBarTheme: AppBarTheme(
       backgroundColor: ColorManager.primary,

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:sarang/src/features/authentication/presentation/sign_up_screen.dart';
 
 import 'theme_manager/theme_data_manager.dart';
 
@@ -13,14 +14,10 @@ class AppScreen extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       theme: getApplicationThemeData(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text("Hello world"),
-        ),
-      ),
+      initialRoute: SignUpScreen.routeName,
+      routes: {
+        SignUpScreen.routeName :(context) => const SignUpScreen(),
+      },
     );
   }
 }
