@@ -1,9 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:sarang/src/theme_manager/asset_image_icon_manager.dart';
 import 'package:sarang/src/theme_manager/color_manager.dart';
 
 class UploadPhotoWidget extends StatelessWidget {
-  const UploadPhotoWidget({super.key});
+  const UploadPhotoWidget({
+    super.key,
+    required this.image,
+  });
+
+  final File? image;
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +32,14 @@ class UploadPhotoWidget extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(100.0),
-            child: const Image(
+            child: image != null 
+              ? Image(
+                  image: FileImage(
+                    image!,
+                  ),
+                  fit: BoxFit.cover,
+                ) 
+              : const Image(
               image: AssetImage(
                 '${AssetImageIconManager.assetPath}/profile_icon.png',
               ),
@@ -32,9 +47,9 @@ class UploadPhotoWidget extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
+        const Positioned(
           bottom: -25.0,
-          child: const SizedBox(
+          child: SizedBox(
             width: 50.0,
             height: 50.0,
             child: Image(
