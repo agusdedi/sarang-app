@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:sarang/src/features/likes_you/domain/user.dart';
 import 'package:sarang/src/features/likes_you/presentation/people_profile_screen.dart';
-import 'package:sarang/src/theme_manager/asset_image_icon_manager.dart';
 import 'package:sarang/src/theme_manager/color_manager.dart';
 import 'package:sarang/src/theme_manager/font_manager.dart';
 import 'package:sarang/src/theme_manager/style_manager.dart';
 import 'package:sarang/src/theme_manager/values_manager.dart';
 
 class PeopleLovedCardWidget extends StatelessWidget {
-  const PeopleLovedCardWidget({super.key});
+  const PeopleLovedCardWidget({
+    super.key,
+    required this.user,
+  });
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,8 @@ class PeopleLovedCardWidget extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context, 
-            PeopleProfileScreen.routeName
+            PeopleProfileScreen.routeName,
+            arguments: user,
           );
         },
         child: Container(
@@ -35,25 +41,25 @@ class PeopleLovedCardWidget extends StatelessWidget {
             leading: Container(
               width: 70.0,
               height: 70.0,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
-                    '${AssetImageIconManager.assetPath}/people_love1_image.png',
+                    user.imagePath,
                   ),
                 ),
               ),
             ),
             title: Text(
-              'Ismirada',
+              user.fullName,
               style: getWhiteTextStyle(
                 fontSize: FontSizeManager.f20,
                 fontWeight: FontWeightManager.semiBold,
               ),
             ),
             subtitle: Text(
-              '24, Doctor',
+              '${user.age}, ${user.occupation}',
               style: getGrey60TextStyle(),
             ),
           ),

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:sarang/src/features/likes_you/domain/user.dart';
 import 'package:sarang/src/theme_manager/font_manager.dart';
 import 'package:sarang/src/theme_manager/style_manager.dart';
 import 'package:sarang/src/theme_manager/values_manager.dart';
 
 class PeopleIdentityWidget extends StatelessWidget {
   const PeopleIdentityWidget({
-    super.key,
-  });
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +22,21 @@ class PeopleIdentityWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Ismirada',
+            user.fullName,
             style: getWhiteTextStyle(
               fontSize: FontSizeManager.f28,
               fontWeight: FontWeightManager.semiBold,
             ),
           ),
           Text(
-            '24, Doctor',
+            '${user.age}, ${user.occupation}',
             style: getBlackTextStyle(),
           ),
           const SizedBox(
             height: AppSize.s16,
           ),
           Text(
-            'I love solving problem in terms of finance, business, and any case. With you, we will solve all world problems.',
+            user.description,
             style: getWhiteTextStyle(),
           ),
           const SizedBox(

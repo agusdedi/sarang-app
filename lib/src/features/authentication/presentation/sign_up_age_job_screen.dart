@@ -30,7 +30,9 @@ class _SignUpAgeJobScreenState extends State<SignUpAgeJobScreen> {
   @override
   void dispose() {
     jobController.clear();
+    jobController.dispose();
     ageController.clear();
+    ageController.dispose();
     super.dispose();
   }
 

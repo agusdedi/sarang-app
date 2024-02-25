@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sarang/src/features/likes_you/domain/user.dart';
 import 'package:sarang/src/theme_manager/asset_image_icon_manager.dart';
 import 'package:sarang/src/theme_manager/font_manager.dart';
 import 'package:sarang/src/theme_manager/style_manager.dart';
@@ -7,7 +8,10 @@ import 'package:sarang/src/theme_manager/values_manager.dart';
 class ClassCardWidget extends StatelessWidget {
   const ClassCardWidget({
     Key? key,
+    required this.user,
   }) : super(key: key);
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +43,14 @@ class ClassCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Sabrina',
+                user.fullName,
                 style: getWhiteTextStyle(
                   fontSize: FontSizeManager.f20,
                   fontWeight: FontWeightManager.semiBold,
                 ),
               ),
               Text(
-                '22, Treveler',
+                '${user.age}, ${user.occupation}',
                 style: getWhiteTextStyle(
                   fontSize: FontSizeManager.f14,
                 ),
